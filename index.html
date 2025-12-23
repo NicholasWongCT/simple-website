@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click Counter</title>
+
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .counter {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .click-btn {
+            background: #00e676;
+            color: #004d40;
+        }
+
+        .reset-btn {
+            background: #ff5252;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Button Click Counter</h1>
+        <div class="counter" id="count">0</div>
+
+        <button class="click-btn" onclick="increment()">Click Me</button>
+        <button class="reset-btn" onclick="resetCounter()">Reset</button>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById("count").textContent = count;
+        }
+
+        function resetCounter() {
+            count = 0;
+            document.getElementById("count").textContent = count;
+        }
+    </script>
+
+</body>
+</html>
