@@ -11,9 +11,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
             font-family: Arial, sans-serif;
             color: white;
+            transition: background 0.5s ease;
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
         .container {
@@ -57,9 +58,23 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+
+        /* Theme button */
+        .theme-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.85);
+            color: #333;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
+
+    <button class="theme-btn" onclick="changeTheme()">🎨 Theme</button>
 
     <div class="container">
         <h1>Button Click Counter</h1>
@@ -71,6 +86,15 @@
 
     <script>
         let count = 0;
+        let themeIndex = 0;
+
+        const themes = [
+            "linear-gradient(135deg, #667eea, #764ba2)",
+            "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+            "linear-gradient(135deg, #43cea2, #185a9d)",
+            "linear-gradient(135deg, #f7971e, #ffd200)",
+            "linear-gradient(135deg, #fc5c7d, #6a82fb)"
+        ];
 
         function increment() {
             count++;
@@ -80,6 +104,11 @@
         function resetCounter() {
             count = 0;
             document.getElementById("count").textContent = count;
+        }
+
+        function changeTheme() {
+            themeIndex = (themeIndex + 1) % themes.length;
+            document.body.style.background = themes[themeIndex];
         }
     </script>
 
