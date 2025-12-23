@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Click Counter</title>
+    <title>Fun Click Counter</title>
 
     <style>
         body {
@@ -23,6 +23,7 @@
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 350px;
         }
 
         h1 {
@@ -31,17 +32,31 @@
 
         .counter {
             font-size: 3rem;
-            margin: 20px 0;
+            margin: 15px 0;
+        }
+
+        .joke-box {
+            margin-top: 20px;
+            font-size: 1rem;
+            min-height: 50px;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
         }
 
         button {
-            font-size: 1.1rem;
-            padding: 12px 25px;
-            margin: 10px;
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin: 8px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .click-btn {
@@ -54,9 +69,14 @@
             color: white;
         }
 
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .joke-btn {
+            background: #40c4ff;
+            color: #003c8f;
+        }
+
+        .clear-btn {
+            background: #b388ff;
+            color: #2e004f;
         }
 
         /* Theme button */
@@ -77,11 +97,17 @@
     <button class="theme-btn" onclick="changeTheme()">🎨 Theme</button>
 
     <div class="container">
-        <h1>Button Click Counter</h1>
+        <h1>Fun Click Counter</h1>
+
         <div class="counter" id="count">0</div>
 
         <button class="click-btn" onclick="increment()">Click Me</button>
         <button class="reset-btn" onclick="resetCounter()">Reset</button>
+
+        <div class="joke-box" id="joke">Press the joke button 😄</div>
+
+        <button class="joke-btn" onclick="tellJoke()">Tell Me a Joke</button>
+        <button class="clear-btn" onclick="clearJoke()">Clear Joke</button>
     </div>
 
     <script>
@@ -94,6 +120,14 @@
             "linear-gradient(135deg, #43cea2, #185a9d)",
             "linear-gradient(135deg, #f7971e, #ffd200)",
             "linear-gradient(135deg, #fc5c7d, #6a82fb)"
+        ];
+
+        const jokes = [
+            "Why don’t programmers like nature? Too many bugs.",
+            "Why do Java developers wear glasses? Because they don’t C#.",
+            "I told my computer I needed a break — it froze.",
+            "Why was the JavaScript developer sad? Because they didn’t know how to ‘null’.",
+            "Why did the programmer quit their job? Because they didn’t get arrays."
         ];
 
         function increment() {
@@ -109,6 +143,15 @@
         function changeTheme() {
             themeIndex = (themeIndex + 1) % themes.length;
             document.body.style.background = themes[themeIndex];
+        }
+
+        function tellJoke() {
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            document.getElementById("joke").textContent = jokes[randomIndex];
+        }
+
+        function clearJoke() {
+            document.getElementById("joke").textContent = "";
         }
     </script>
 
